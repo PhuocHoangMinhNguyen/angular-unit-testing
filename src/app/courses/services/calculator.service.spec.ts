@@ -17,7 +17,7 @@ describe('CalculatorService', () => {
 
         const logger = new LoggerService();
 
-        const calculator = new CalculatorService(logger);
+        const calculator = new CalculatorService(logger); jjhi
 
         const result = calculator.subtract(2, 2);
 
