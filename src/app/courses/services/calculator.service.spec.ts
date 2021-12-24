@@ -1,26 +1,47 @@
-import { CalculatorService } from './calculator.service';
 import { LoggerService } from './logger.service';
-describe('CalculatorService', () => {
-    it('should add two numbers', () => {
-        const logger = jasmine.createSpyObj('LoggerService', ["log"]);
+import { TestBed } from '@angular/core/testing';
+import { CalculatorService } from './calculator.service';
 
-        const calculator = new CalculatorService(logger);
+fdescribe('CalculatorService', () => {
+
+    let calculator: CalculatorService,
+        loggerSpy: any;
+
+    beforeEach(() => {
+
+        console.log("Calling beforeEach");
+
+        loggerSpy = jasmine.createSpyObj('LoggerService', ["log"]);
+
+        TestBed.configureTestingModule({
+            providers: [
+                CalculatorService,
+                { provide: LoggerService, useValue: loggerSpy }
+            ]
+        })
+
+        calculator = TestBed.get(CalculatorService);
+    })
+
+    it('should add two numbers', () => {
+
+        console.log("add test");
 
         const result = calculator.add(2, 2);
 
         expect(result).toBe(4);
 
-        expect(logger.log).toHaveBeenCalledTimes(1);
+        expect(loggerSpy.log).toHaveBeenCalledTimes(1);
     });
 
     it('should substract two numbers', () => {
 
-        const logger = new LoggerService();
-
-        const calculator = new CalculatorService(logger); jjhi
+        console.log("subtract test");
 
         const result = calculator.subtract(2, 2);
 
         expect(result).toBe(0, "unexpected substraction result");
+
+        expect(loggerSpy.log).toHaveBeenCalledTimes(1);
     });
 });
