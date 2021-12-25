@@ -5,7 +5,7 @@ import { CoursesService } from './courses.service';
 import { Course } from '../model/course';
 import { HttpErrorResponse } from '@angular/common/http';
 
-fdescribe('CoursesService', () => {
+describe('CoursesService', () => {
 
     let coursesService: CoursesService,
         httpTestingController: HttpTestingController;
