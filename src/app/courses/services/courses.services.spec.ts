@@ -18,8 +18,8 @@ describe('CoursesService', () => {
             ]
         });
 
-        coursesService = TestBed.get(CoursesService);
-        httpTestingController = TestBed.get(HttpTestingController);
+        coursesService = TestBed.inject(CoursesService);
+        httpTestingController = TestBed.inject(HttpTestingController);
     });
 
     it('should retrieve all courses', () => {
